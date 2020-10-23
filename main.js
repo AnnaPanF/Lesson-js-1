@@ -94,6 +94,23 @@ class Cart {
         this.products.push(product)
     }
 
+    render(element) {
+        for(const product of this.products){
+            const productElement = document.createElement('div')
+            const nameElement = document.createElement('span')
+            nameElement.innerText = 'Название: ' + product.name
+            productElement.appendChild(nameElement)
+            const priceElement = document.createElement('span')
+            priceElement.innerText = 'Стоимость: ' + product.price
+            productElement.appendChild(priceElement)
+            element.appendChild(productElement)
+        }
+        const totalPriceElement = document.createElement('div')
+        totalPriceElement.innerText = this.calculatePrice()
+        element.appendChild(totalPriceElement)
+    }
+
+
 }
 
 class Product {
@@ -110,3 +127,55 @@ let headphones = new Product ("наушники", 500)
 let my_cart = new Cart ([phone,player,headphones])                                           
 
 console.log(my_cart.calculatePrice())
+
+
+
+
+// Урок 5
+
+
+// Задание 1
+function myBoard() {
+    const board = document.querySelector('#board')
+    let flag = true
+    let arrLetter = ['','a','b','c','d','e','f','g','h']
+    let arrNumber = [1,2,3,4,5,6,7,8]
+
+    const row = document.createElement('div')
+    row.className = 'row'
+    board.appendChild(row)
+    for(let j = 0; j < 9; j++) {
+        const cell = document.createElement('div')
+        row.appendChild(cell)
+        cell.className = 'header'
+        cell.innerText = arrLetter[j]
+    }
+
+    for(let i = 0; i < 8; i++) {
+        const row = document.createElement('div')
+        row.className = 'row'
+        board.appendChild(row)
+        const cell = document.createElement('div')
+        cell.className = 'header'
+        row.appendChild(cell)
+        cell.innerText = arrNumber[i]
+        for(let j = 0; j < 8; j++) {
+            const cell = document.createElement('div')
+            row.appendChild(cell)
+            if (flag) {
+                cell.className = 'cell black'
+                flag = false
+            }  else {
+                cell.className = 'cell white'
+                flag = true
+            }
+        } 
+        flag = !flag
+    }    
+}
+myBoard()
+
+
+//Задание 2
+
+my_cart.render(document.querySelector('.card'))
