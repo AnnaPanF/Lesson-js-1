@@ -1,0 +1,199 @@
+.logo-img {
+    display: inline-block;
+}
+.logo {
+    height: 150px;
+    width: 150px;
+}
+
+.navigation {
+    display: inline-block;
+}
+
+.menu-li {
+    margin-left: 130px;
+    display: inline;
+}
+
+
+.header {
+    width: 100%;
+}
+
+.link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(65, 1, 43);
+}
+
+.link:hover {
+    text-decoration: none;
+    color: rgb(133, 8, 102);
+}
+
+.search, .cart {
+    color: rgb(65, 1, 43);
+    width: 100%;
+}
+
+.search:hover {
+    color: rgb(133, 8, 102);
+}
+
+.cart:hover {
+    color: rgb(133, 8, 102);
+}
+
+.search {
+    margin-right: 20px;
+}
+
+.card {
+ width: 250px;
+ min-height: 400px;
+ margin-top: 50px;
+ border: 5px solid  rgb(133, 8, 102);
+ border-radius: 10px;
+}
+
+.main,
+.bg {
+    position: absolute;
+    z-index: -1;
+    height: 1300px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg {
+    background-color: rgba(223, 211, 211, 0.7);
+}
+
+.title, .total {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(65, 1, 43);
+}
+
+.product-img {
+    width: 80px;
+    height: 80px;
+}
+
+.product, .price {
+    display: block;
+    font-size: 14px;
+    color: rgb(133, 8, 102);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.price {
+    color: rgb(65, 1, 43);
+}
+
+.cart-main {
+    width: 350px;
+}
+
+.main-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.list-product {
+    margin-top: 50px;
+}
+
+.button {
+    border-radius: 20px;
+    background-color: rgb(65, 1, 43);
+    border: none;
+    width: 100px;
+    height: 40px;
+    color: white;
+    font-family:'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover {
+    background-color: rgb(133, 8, 102);
+}
+
+.button:active {
+    background-color: rgb(238, 26, 164);
+    border: none;
+}
+
+.list-prod, .list-price {
+    color:rgb(65, 1, 43);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.list-prod {
+    color:rgb(133, 8, 102);
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    top: 1350px;
+}
+
+.footer-text {
+    color: rgb(65, 1, 43);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+Шахматная доска
+/*.cell {
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        border: 1px solid black;
+        vertical-align: text-top;
+    }
+    .black {
+        background-color: black;
+    }
+    .white {
+        background-color: white;
+    }
+    .row {
+        height: 40px;
+        
+    }
+    .header {
+        height: 42px;
+        width: 42px;
+        display: inline-block;
+        text-align: center;
+        margin-top: 10px;
+        vertical-align: text-top;
+        font-size: 20px;
+    }*/
