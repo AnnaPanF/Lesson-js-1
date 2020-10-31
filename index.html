@@ -3,38 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/763fc2ebe9.js"></script>
 </head>
 <body>
-   <div id="board"></div>
-   <div class="card"></div>
-<style>
-    .cell {
-        height: 40px;
-        width: 40px;
-        display: inline-block;
-        border: 1px solid black;
-        vertical-align: text-top;
-    }
-    .black {
-        background-color: black;
-    }
-    .white {
-        background-color: white;
-    }
-    .row {
-        height: 40px;
+    <header class="container-fluid">
+        <div class="header">
+            <div class="row">
+                <div class="logo-img col-2 d-flex justify-content-center align-items-center ">
+                    <img class="logo" src="img/df36730a3a16ad70d0a35f47fa7b3bba.jpg" alt="">
+                </div>
+                <nav class="col-6 d-flex navigation justify-content-center align-items-center">
+                    <ul class="menu ">
+                        <li class="menu-li">
+                            <a class="link" href="#">Главная</a>
+                        </li>
+                        <li class="menu-li">
+                            <a class="link" href="#">Каталог</a>
+                        </li>
+                        <li class="menu-li">
+                            <a class="link" href="#">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="col-4 d-flex menu-search justify-content-center align-items-center">
+                    <a  href="#"><i class="search fa fa-search fa-2x" aria-hidden="true"></i></a>
+                    <a  href="#"><i class="cart fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a>
+                </div>
+            </div>
+    </div>
+    </header>
+    <section class="container-fluid">
+        <img class="row main" src="img/fon2.png" alt="">
+        <div class="row bg"></div>
+        <div class="row">
+            <div class="products col-7"></div>
+            <div class="card col-4 justify-content-center align-items-center"></div>
+        </div>
         
-    }
-    .header {
-        height: 42px;
-        width: 42px;
-        display: inline-block;
-        text-align: center;
-        margin-top: 10px;
-        vertical-align: text-top;
-        font-size: 20px;
-    }
-</style>
+    </section>
+    <footer class="container-fluid footer">
+        <span class="footer-text d-flex justify-content-center">&#169;Все права защищены.2020</span>
+    </footer>
+   
     <script src="main.js"></script>
 </body>
 </html>

@@ -79,8 +79,9 @@ console.log(convertNumberToObject(245))
 
 // Задание 2
 class Cart {
-    constructor(product) {
+    constructor(product, element) {
         this.products = product
+        this.element = element
     }
 
     calculatePrice(){
@@ -94,37 +95,87 @@ class Cart {
         this.products.push(product)
     }
 
-    render(element) {
+    render() {
+        this.element.innerHTML = '<span class="title d-flex justify-content-center align-items-center">Корзина</span>' 
         for(const product of this.products){
             const productElement = document.createElement('div')
-            const nameElement = document.createElement('span')
-            nameElement.innerText = 'Название: ' + product.name
-            productElement.appendChild(nameElement)
-            const priceElement = document.createElement('span')
-            priceElement.innerText = 'Стоимость: ' + product.price
-            productElement.appendChild(priceElement)
-            element.appendChild(productElement)
+            productElement.className = 'cart-main'
+            productElement.innerHTML = `
+                <figure class="row">
+                <div class="col-4">
+                <img class="product-img" src="${product.picture}" alt=""/>
+                </div>
+                <figcaption class="col-8 my-auto">
+                <span class="product">${product.name}</span>
+                <span class="price">Стоимость: ${product.price}</span>
+                </figcaption>
+                </figure>
+            `
+            this.element.appendChild(productElement)
         }
         const totalPriceElement = document.createElement('div')
-        totalPriceElement.innerText = this.calculatePrice()
-        element.appendChild(totalPriceElement)
+        totalPriceElement.innerText = 'Итоговая стоимость: ' + this.calculatePrice()
+        totalPriceElement.className = 'total'
+        this.element.appendChild(totalPriceElement)
     }
 
+
+}
+
+class List {
+    constructor(products, cart, element) {
+        this.products = products
+        this.cart = cart
+        this.element = element
+    }
+
+    render(){
+        this.element.innerHTML = ''
+        for(const product of this.products){
+            const listElement = document.createElement('div')
+            listElement.className = 'list-product'
+            listElement.innerHTML = `
+                <figure class="row">
+                    <div class="col-4 d-flex justify-content-center">
+                        <img class="main-img" src="${product.picture}" alt=""/>
+                    </div>
+                    <figcaption class="col-8 my-auto">
+                        <span class="product list-prod">${product.name}</span>
+                        <span class="price list-price"> ${product.description}</span>
+                        <button class="button">Купить</button>
+                    </figcaption>
+                </figure>
+            `
+            const button = listElement.querySelector("button")
+            button.onclick = () => {
+                this.cart.addNewProduct(product)
+                this.cart.render()
+            }
+            this.element.appendChild(listElement)
+        }
+    }
 
 }
 
 class Product {
-    constructor(name,price) {
+    constructor(name,price,picture,description) {
     this.name = name
     this.price = price
+    this.picture = picture
+    this.description = description
     }
 }
 
 
-let phone = new Product ("телефон", 1000)
-let player = new Product ("плеер", 1500)
-let headphones = new Product ("наушники", 500)
-let my_cart = new Cart ([phone,player,headphones])                                           
+let cherry = new Product ("Капкейк с вишней", 150, 'img/cherry.jpg', 'Нежные, сливочные ванильные капкейки с яркой вишнёвой начинкой и красивой шапочкой из воздушного ягодного крема.')
+let raspberry = new Product ("Капкейк с малиной", 150, 'img/raspberry.jpg', 'Шоколадные капкейки с нежной малиновой начинкой и красивой шапочкой из взбитого творожного крема.')
+let blackberry = new Product ("Капкейк с ежевикой", 200, 'img/blackberry.jpg', 'Воздушные творожные капкейки с необычной ежевичной начинкой и красивой шапочкой из сливочного крема.')
+let my_cart = new Cart ([], document.querySelector('.card'))  
+let my_list = new List ([cherry,raspberry,blackberry], my_cart, document.querySelector('.products') ) 
+
+my_cart.render()
+
+my_list.render()
 
 console.log(my_cart.calculatePrice())
 
@@ -135,47 +186,47 @@ console.log(my_cart.calculatePrice())
 
 
 // Задание 1
-function myBoard() {
-    const board = document.querySelector('#board')
-    let flag = true
-    let arrLetter = ['','a','b','c','d','e','f','g','h']
-    let arrNumber = [1,2,3,4,5,6,7,8]
+//function myBoard() {
+    //const board = document.querySelector('#board')
+    //let flag = true
+    //let arrLetter = ['','a','b','c','d','e','f','g','h']
+    //let arrNumber = [1,2,3,4,5,6,7,8]
 
-    const row = document.createElement('div')
-    row.className = 'row'
-    board.appendChild(row)
-    for(let j = 0; j < 9; j++) {
-        const cell = document.createElement('div')
-        row.appendChild(cell)
-        cell.className = 'header'
-        cell.innerText = arrLetter[j]
-    }
+    //const row = document.createElement('div')
+    //row.className = 'row'
+    //board.appendChild(row)
+    //for(let j = 0; j < 9; j++) {
+        //const cell = document.createElement('div')
+        //row.appendChild(cell)
+        //cell.className = 'header'
+        //cell.innerText = arrLetter[j]
+    //}
 
-    for(let i = 0; i < 8; i++) {
-        const row = document.createElement('div')
-        row.className = 'row'
-        board.appendChild(row)
-        const cell = document.createElement('div')
-        cell.className = 'header'
-        row.appendChild(cell)
-        cell.innerText = arrNumber[i]
-        for(let j = 0; j < 8; j++) {
-            const cell = document.createElement('div')
-            row.appendChild(cell)
-            if (flag) {
-                cell.className = 'cell black'
-                flag = false
-            }  else {
-                cell.className = 'cell white'
-                flag = true
-            }
-        } 
-        flag = !flag
-    }    
-}
-myBoard()
+    //for(let i = 0; i < 8; i++) {
+        //const row = document.createElement('div')
+        //row.className = 'row'
+        //board.appendChild(row)
+        //const cell = document.createElement('div')
+        //cell.className = 'header'
+        //row.appendChild(cell)
+        //cell.innerText = arrNumber[i]
+        //for(let j = 0; j < 8; j++) {
+            //const cell = document.createElement('div')
+            //row.appendChild(cell)
+            //if (flag) {
+                //cell.className = 'cell black'
+                //flag = false
+            //}  else {
+                //cell.className = 'cell white'
+                //flag = true
+            //}
+        //} 
+        //flag = !flag
+    //}    
+//}
+//myBoard()
 
 
 //Задание 2
 
-my_cart.render(document.querySelector('.card'))
+
