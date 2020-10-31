@@ -79,38 +79,64 @@ console.log(convertNumberToObject(245))
 
 // Задание 2
 class Cart {
-    constructor(product, element) {
-        this.products = product
+    constructor(products, element) {
+        this.cartProducts = products.map(function(product) {
+            return new CartProduct(product)
+        })
         this.element = element
     }
 
     calculatePrice(){
-        return countBasketPrice(this.products.map(function(product) {
-            return product.price
+        return countBasketPrice(this.cartProducts.map(function(cartProduct) {
+            return cartProduct.product.price
         })) 
            
     }
 
     addNewProduct(product) {
-        this.products.push(product)
+        let existsCartProduct = this.cartProducts.find(function(cartProduct) {
+            return cartProduct.product.name === product.name
+        })
+        if (existsCartProduct === undefined) {
+            this.cartProducts.push(new CartProduct(product))
+        } else {
+            existsCartProduct.counter = existsCartProduct.counter + 1
+        }
+        
     }
 
     render() {
         this.element.innerHTML = '<span class="title d-flex justify-content-center align-items-center">Корзина</span>' 
-        for(const product of this.products){
+
+        this.cartProducts = this.cartProducts.filter(function(cartProduct) {
+            return cartProduct.counter > 0
+        })
+        
+        for(const cartProduct of this.cartProducts){
             const productElement = document.createElement('div')
             productElement.className = 'cart-main'
             productElement.innerHTML = `
                 <figure class="row">
                 <div class="col-4">
-                <img class="product-img" src="${product.picture}" alt=""/>
+                <img class="product-img" src="${cartProduct.product.picture}" alt=""/>
                 </div>
                 <figcaption class="col-8 my-auto">
-                <span class="product">${product.name}</span>
-                <span class="price">Стоимость: ${product.price}</span>
+                <span class="product">${cartProduct.product.name}</span>
+                <span class="price">Стоимость: ${cartProduct.product.price}</span>
+                <div class="counter">
+                <input class="text" type="text" value="${cartProduct.counter}">
+                <button class="count">-</button>
+                </div>
                 </figcaption>
                 </figure>
             `
+
+            const button = productElement.querySelector("button")
+            button.onclick = () => {
+                cartProduct.counter = cartProduct.counter - 1
+                this.render()
+            }
+
             this.element.appendChild(productElement)
         }
         const totalPriceElement = document.createElement('div')
@@ -120,6 +146,13 @@ class Cart {
     }
 
 
+}
+
+class CartProduct {
+    constructor(product) {
+        this.product = product
+        this.counter = 1
+    }
 }
 
 class List {

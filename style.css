@@ -163,6 +163,45 @@
     margin-top: 30px;
 }
 
+.text {
+    height: 30px;
+    width: 50px;
+    border-radius: 15px;
+}
+
+.text:focus {
+    outline: none;
+}
+
+.count {
+    background-color: rgb(65, 1, 43);
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    border-radius: 15px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.count:hover {
+    background-color: rgb(133, 8, 102);
+}
+
+.count:active{
+    background-color: rgb(238, 26, 164);
+}
+
+.count:focus {
+    outline: none;
+}
+
+.counter {
+    margin-top: 10px;
+}
+
 
 
 
